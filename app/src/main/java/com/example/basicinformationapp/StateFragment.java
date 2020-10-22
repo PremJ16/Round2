@@ -16,14 +16,17 @@ import androidx.fragment.app.ListFragment;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class CountryFragment extends ListFragment implements AdapterView.OnItemClickListener {
-
+public class StateFragment extends ListFragment implements AdapterView.OnItemClickListener {
     private ArrayAdapter adapter;
+    public static int selection_status;
     private CountryActivity root_activity;
-    private ArrayList<String> countriesList;
+    public String countryCode;
+    private ArrayList<String> statesList;
 
-    public CountryFragment(ArrayList<String> countries) {
-        countriesList=countries;
+    public StateFragment(ArrayList<String> states){
+
+        this.countryCode=countryCode;
+        this.statesList=states;
     }
 
     @Nullable
@@ -33,24 +36,24 @@ public class CountryFragment extends ListFragment implements AdapterView.OnItemC
         root_activity=(CountryActivity) getActivity();
         View view=inflater.inflate(R.layout.listlayout,container,false);
         return view;
+
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String country=adapter.getItem(position).toString();
-        Toast.makeText(getActivity(),"Item: "+country,Toast.LENGTH_SHORT).show();
-        root_activity.countrySelected=country;
-        root_activity.selection_status=CountryActivity.STATE_SELECTION;
-        root_activity.selectionShow.setText(country);
-        root_activity.showStatesFragment(country);
-
+        String state=adapter.getItem(position).toString();
+        String country=root_activity.countrySelected;
+        Toast.makeText(getActivity(),"Item: "+state,Toast.LENGTH_SHORT).show();
+        root_activity.stateSelected=state;
+        root_activity.selectionShow.setText(country+", "+state);
+        root_activity.selection_status=CountryActivity.DONE_SELECTION;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        adapter= new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, countriesList);
+        adapter= adapter= new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1, statesList);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
 
