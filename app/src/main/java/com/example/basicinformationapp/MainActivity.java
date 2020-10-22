@@ -136,8 +136,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     @Override
@@ -283,7 +281,8 @@ public class MainActivity extends AppCompatActivity {
             return null;
         } else {
             String phone=phoneNo.getText().toString();
-            if(phone.length()==10) {
+
+            if((phone.length() == 10)) {
                 data.put(PHONE, phone);
             } else {
                 phoneNo.requestFocus();
