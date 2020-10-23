@@ -32,7 +32,8 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.regex.*;
+import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
     public Button setbutton;
     public Button selectbutton;
@@ -168,45 +169,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i(LOG_TAG, "MainActivity : onDestroy");
     }
 
-    /*@Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        String fn=firstname.getText()==null?null:firstname.getText().toString();
-        outState.putString(F_NAME, fn);
+    public static boolean isValid(String s)
+    {
+        Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
     }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState.getString(F_NAME)==null) {
-            firstname.setText(savedInstanceState.getString());
-        }
-    }*/
-
-    /*@Override
-    protected void onResume() {
-        super.onResume();
-        if(fname!=null)
-                firstname.setText(fname);
-        if(lname!=null)
-            lastname.setText(lname);
-        if(ageValue!=null)
-            age.setText(ageValue);
-        if(emailId!=null)
-            email.setText(emailId);
-        if(phone!=null)
-            phoneNo.setText(phone);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        fname=firstname.getText()==null?null:firstname.getText().toString();
-        lname=lastname.getText()==null?null:lastname.getText().toString();
-        ageValue=age.getText()==null?null:age.getText().toString();
-        emailId=email.getText()==null?null:email.getText().toString();
-        phone=phoneNo.getText()==null?null:phoneNo.getText().toString();
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -282,11 +250,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             String phone=phoneNo.getText().toString();
 
-            if((phone.length() == 10)) {
+            if(isValid(phone)) {
                 data.put(PHONE, phone);
             } else {
                 phoneNo.requestFocus();
-                Toast.makeText(getApplicationContext(), "Phone Number must have only 10 Digits", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Phone number must have 10 digits and should start with 7,8 or 9", Toast.LENGTH_SHORT).show();
                 return null;
             }
         }

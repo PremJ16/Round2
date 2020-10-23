@@ -6,7 +6,7 @@
     <string name="age">Age</string>
     <string name="BirthDate">Birthdate</string>
     <string name="Phone">Phone Number</string>
-    <string name="Country">Country</string>
+    <string name="Country">Country,State</string>
     <string name="Firstnamevalue">first name</string>
     <string name="lastnamevalue">last name</string>
     <string name="ageValue">age</string>
@@ -16,7 +16,7 @@
     <string name="email">Email id</string>
     <string name="emailvalue">Email address</string>
     <string name="buttonValue">Set</string>
-    <string name="CountryValue">Select the country using button</string>
+    <string name="CountryValue">Select the country,state using button</string>
     <string name="buttonValv">select</string>
     <string name="doneButton">Done</string>
     <string name="submitbutton">Submit</string>
