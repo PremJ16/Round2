@@ -32,14 +32,14 @@
     <FrameLayout
         android:id="@+id/fragmentFrame"
         android:layout_width="383dp"
-        android:layout_height="558dp"
+        android:layout_height="590dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/c_donebutton"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.266">
 
     </FrameLayout>
 
